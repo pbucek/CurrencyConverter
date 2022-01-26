@@ -1,17 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Currency Converter
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large" class="ion-text-center">Currency Converter</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+    <!-- <div class="spacer"></div> -->
+    <ion-card class="ion-text-center">
+      <ion-card-header>
+          <ion-card-title>
+  
+            <div class="flex">
+              <div>
+                <ion-input [(ngModel)]="convInput" type="number" min="0" placeholder="0" class="ion-text-center"></ion-input>
+              </div>
+    
+              <ion-select [(ngModel)]="codeInput">
+                <ion-select-option *ngFor="let codeInput of currencyCodes" [value]="codeInput">
+                  {{ codeInput }}
+                </ion-select-option>
+              </ion-select>
+  
+            </div>
+            
+            <br>
+            <ion-icon class="padding" name="caret-down-outline"></ion-icon>
+  
+            <div class="flex">
+            <div id="output" class="ion-text-center">
+              <p>
+                {{ convOutput }}
+              </p>
+            </div>
+            
+            <ion-select [(ngModel)]="codeOutput">
+              <ion-select-option *ngFor="let codeOutput of currencyCodes" [value]="codeOutput">
+                {{ codeOutput }}
+              </ion-select-option>
+            </ion-select>
+  
+            </div>
+            
+           
+          </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    
+    <ion-button (click)="btnConvertClicked()" color="primary" expand="block">Convert</ion-button>
+  
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>
