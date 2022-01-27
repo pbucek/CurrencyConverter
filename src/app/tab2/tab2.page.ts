@@ -8,11 +8,11 @@ import { Storage } from '@capacitor/storage';
 })
 export class Tab2Page {
 
-  test
+  history
 
   constructor() 
   {
-    this.test = new Array<string>()
+    this.history = new Array<string>()
   }
 
   ngOnInit()
@@ -20,7 +20,7 @@ export class Tab2Page {
   }
   
   async ionViewDidEnter(){
-    this.test = []
+    this.history = []
     var obj = await Storage.keys()
 
     for (var key of obj.keys)
@@ -28,7 +28,7 @@ export class Tab2Page {
       // console.log(key)
       var item = await Storage.get({ key: key })
 
-      this.test.push(item)
+      this.history.push(item)
     }
   }
 }
